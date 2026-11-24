@@ -1,0 +1,55 @@
+{
+  "name": "quantisnow",
+  "version": "0.1.1",
+  "description": "SEC EDGAR MCP server and CLI: full-text search of SEC filings, Form 4 insider trades, 13F holdings, 8-K events, XBRL financials and congress trades for Claude, ChatGPT, Cursor and your terminal.",
+  "type": "module",
+  "bin": {
+    "quantisnow": "bin/quantisnow.mjs"
+  },
+  "files": [
+    "bin",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs"
+  },
+  "keywords": [
+    "sec",
+    "edgar",
+    "sec-api",
+    "insider-trading",
+    "form-4",
+    "13f",
+    "8-k",
+    "full-text-search",
+    "mcp",
+    "model-context-protocol",
+    "claude",
+    "cursor",
+    "finance",
+    "cli",
+    "sec-edgar",
+    "edgar-mcp",
+    "sec-mcp",
+    "mcp-server",
+    "xbrl",
+    "13d",
+    "form-144"
+  ],
+  "homepage": "https://www.quantisnow.com/sec-api",
+  "license": "MIT",
+  "author": "Quantisnow",
+  "mcpName": "com.quantisnow/sec-edgar",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quantisnow/sec-edgar-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/quantisnow/sec-edgar-mcp/issues"
+  }
+}
