@@ -48,7 +48,7 @@ npx quantisnow mcp install gemini
 
 Add `--print` to see the change without writing it. For clients that only start local commands, `npx quantisnow mcp` runs a stdio server that forwards to the hosted one.
 
-New accounts get 20 free calls. Plans start at $49 a month: [pricing](https://www.quantisnow.com/sec-api#plans).
+Signing up is free and needs no card.
 
 ## Tools
 
@@ -101,13 +101,17 @@ npx quantisnow congress NVDA
 
 # Anything else, in the query syntax
 npx quantisnow query 13f/holdings "manager.cik:0001067983 AND period:2026-09-30" --sort valueUsd:desc
+
+# Cut any search by company size or sector
+npx quantisnow query insider-trades "transactionCodes:P AND filedAt:[2026-10-25 TO 2026-11-24] AND issuer.marketCap:<300000000" --sort purchased.valueUsd:desc
+npx quantisnow query 8-k/events 'items.item:"4.01" AND sector:"Health Care"'
 ```
 
 Add `--json` to any command to get the raw response for `jq`, `-n 50` for more rows, and `--show-query` on the shortcut commands to see the query they send.
 
 ## Keys and limits
 
-`npx quantisnow usage` shows your plan, the calls left and your credits; it doesn't count as a call. Every search, `ask` and MCP tool call is one call. When the calls run out the API answers `429` instead of charging for more.
+`npx quantisnow usage` shows what you have left; it doesn't count as a call. When you need more, [plans](https://www.quantisnow.com/sec-api#plans) are monthly and never charge for overage: the API answers `429` instead.
 
 Prefer an API key over the browser sign-in (for CI, servers, scripts)? Make one at [quantisnow.com/sec-api/keys](https://www.quantisnow.com/sec-api/keys), then either:
 

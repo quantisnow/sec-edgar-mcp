@@ -98,7 +98,7 @@ function usingOAuth(flags) {
 async function needKey(flags) {
   const key = await credential(flags);
   if (key) return key;
-  fail(`Not signed in. Run ${bold("npx quantisnow login", tty)} (new accounts get 20 free calls).`);
+  fail(`Not signed in. Run ${bold("npx quantisnow login", tty)} (free, no card).`);
 }
 
 // ---- HTTP ----
@@ -145,8 +145,11 @@ function print(out, flags) {
     return;
   }
   process.stdout.write(formatResults(out.json, { color: tty, links: !flags.noLinks }) + "\n");
-  if (out.credits !== null && out.credits <= 5) process.stderr.write(dim(`${out.credits} free call${out.credits === 1 ? "" : "s"} left. Plans: ${KEYS_URL}\n`, process.stderr.isTTY));
-  else if (out.left !== null && out.left < 100) process.stderr.write(dim(`${out.left} calls left this month.\n`, process.stderr.isTTY));
+  // Quiet unless the account is about to run out. A call paid from credits
+  // carries x-credits-remaining; the plan's monthly count only matters without it.
+  if (out.credits !== null) {
+    if (out.credits <= 3) process.stderr.write(dim(`${out.credits} call${out.credits === 1 ? "" : "s"} left. More: ${KEYS_URL}\n`, process.stderr.isTTY));
+  } else if (out.left !== null && out.left > 0 && out.left < 100) process.stderr.write(dim(`${out.left} calls left this month.\n`, process.stderr.isTTY));
 }
 
 async function run(flags, path, body) {
@@ -168,7 +171,7 @@ const HELP = `
 ${bold("quantisnow", tty)} ${dim(`v${VERSION}`, tty)}  SEC EDGAR data from your terminal and your AI tools
 
 ${bold("Start", tty)}
-  npx quantisnow login                     Sign in in your browser (new accounts get 20 free calls)
+  npx quantisnow login                     Sign in in your browser (free, no card)
   npx quantisnow mcp install claude-code   Plug the SEC API into Claude Code (or cursor, claude-desktop, vscode, windsurf, codex, gemini)
 
 ${bold("Search", tty)}
@@ -237,7 +240,7 @@ async function login(flags) {
   }
   const url = `${SITE}/oauth/authorize?${new URLSearchParams({ response_type: "code", client_id: reg.client_id, redirect_uri: redirectUri, state, scope: "mcp", code_challenge: challenge, code_challenge_method: "S256", resource: MCP_URL })}`;
   const err = process.stderr.isTTY;
-  process.stderr.write(`\nOpening your browser to sign in to Quantisnow. New accounts get ${bold("20 free calls", err)}.\nIf it doesn't open, go to:\n${cyan(url, err)}\n\n`);
+  process.stderr.write(`\nOpening your browser to sign in to Quantisnow.\nIf it doesn't open, go to:\n${cyan(url, err)}\n\n`);
   if (!flags.noBrowser) openUrl(url);
   const code = await new Promise((resolve) => {
     const timer = setTimeout(() => resolve(null), 10 * 60_000);
