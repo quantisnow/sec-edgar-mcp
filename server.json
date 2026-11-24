@@ -1,6 +1,6 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "com.quantisnow/sec-edgar",
+  "name": "io.github.quantisnow/sec-edgar-mcp",
   "title": "Quantisnow SEC EDGAR",
   "description": "SEC EDGAR full-text search, Form 4 insider trades, 13F holdings, 8-K events, XBRL financials.",
   "websiteUrl": "https://www.quantisnow.com/sec-api/mcp",

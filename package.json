@@ -44,7 +44,7 @@
   "homepage": "https://www.quantisnow.com/sec-api",
   "license": "MIT",
   "author": "Quantisnow",
-  "mcpName": "com.quantisnow/sec-edgar",
+  "mcpName": "io.github.quantisnow/sec-edgar-mcp",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/quantisnow/sec-edgar-mcp.git"

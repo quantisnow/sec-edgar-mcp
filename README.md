@@ -1,6 +1,6 @@
 # Quantisnow SEC EDGAR MCP server and CLI
 
-<!-- mcp-name: com.quantisnow/sec-edgar -->
+<!-- mcp-name: io.github.quantisnow/sec-edgar-mcp -->
 
 A hosted MCP server for SEC EDGAR data. Claude, ChatGPT, Cursor, VS Code and other MCP clients can search every SEC filing by what it says, look up Form 4 insider trades, 13F holdings, 13D/13G stakes, 8-K events by item, XBRL financial statements and House members' stock trades. The same data works from your terminal with `npx quantisnow`.
 
