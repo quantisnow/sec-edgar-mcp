@@ -45,9 +45,17 @@ jobs:
       - name: Install mcp-publisher
         run: curl -sL "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_linux_amd64.tar.gz" | tar xz mcp-publisher
 
+      - name: Wait for npm to serve the new version
+        run: |
+          for i in $(seq 1 40); do
+            npm view "quantisnow@$VERSION" version --prefer-online && exit 0
+            sleep 15
+          done
+          echo "npm never served quantisnow@$VERSION"; exit 1
+
       - name: Publish to the MCP registry
         run: |
           ./mcp-publisher login github-oidc
-          # npm can take a minute to serve a new version, and the registry checks it.
-          for i in 1 2 3 4 5 6; do ./mcp-publisher publish && exit 0; sleep 20; done
+          # The registry reads npm through a cache, so a fresh version can lag.
+          for i in $(seq 1 30); do ./mcp-publisher publish && exit 0; sleep 20; done
           exit 1
