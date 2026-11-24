@@ -4,6 +4,15 @@
   "title": "Quantisnow SEC EDGAR",
   "description": "SEC EDGAR full-text search, Form 4 insider trades, 13F holdings, 8-K events, XBRL financials.",
   "websiteUrl": "https://www.quantisnow.com/sec-api/mcp",
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/quantisnow/sec-edgar-mcp/main/icon.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ]
+    }
+  ],
   "repository": {
     "url": "https://github.com/quantisnow/sec-edgar-mcp",
     "source": "github"
