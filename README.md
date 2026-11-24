@@ -126,8 +126,13 @@ The same datasets are a REST API at `https://www.quantisnow.com/api/v1`. API ref
 
 Quantisnow is not affiliated with or endorsed by the U.S. Securities and Exchange Commission. EDGAR is the SEC's filing system; the filings themselves are public records.
 
+## Notebooks
+
+Python notebooks on the same data, from insider buying clusters to restatements and new 13F positions, are in [quantisnow/sec-edgar-notebooks](https://github.com/quantisnow/sec-edgar-notebooks). Each one opens in Jupyter or Google Colab.
+
 ## Releases
 
 Every push to `main` publishes a new version to npm and the MCP registry from GitHub Actions. `package.json` and `server.json` carry the major and minor version; the patch number is the workflow run number.
 
 MIT license.
+
