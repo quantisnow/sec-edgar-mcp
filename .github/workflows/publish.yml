@@ -1,0 +1,53 @@
+name: Publish
+
+# Every push to main publishes a new version to npm and the MCP registry.
+# The patch number is the run number, so nobody has to bump versions by hand:
+# package.json and server.json only carry major.minor.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+
+      - name: Test
+        run: npm test
+
+      - name: Set version
+        run: |
+          base=$(node -p "require('./package.json').version.split('.').slice(0,2).join('.')")
+          version="$base.${{ github.run_number }}"
+          npm version "$version" --no-git-tag-version --allow-same-version
+          jq --arg v "$version" '.version = $v | (.packages[]?.version) = $v' server.json > server.tmp && mv server.tmp server.json
+          echo "VERSION=$version" >> "$GITHUB_ENV"
+
+      - name: Publish to npm
+        run: npm publish --access public --provenance
+
+      - name: Install mcp-publisher
+        run: curl -sL "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_linux_amd64.tar.gz" | tar xz mcp-publisher
+
+      - name: Publish to the MCP registry
+        run: |
+          ./mcp-publisher login github-oidc
+          # npm can take a minute to serve a new version, and the registry checks it.
+          for i in 1 2 3 4 5 6; do ./mcp-publisher publish && exit 0; sleep 20; done
+          exit 1

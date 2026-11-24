@@ -126,4 +126,8 @@ The same datasets are a REST API at `https://www.quantisnow.com/api/v1`. API ref
 
 Quantisnow is not affiliated with or endorsed by the U.S. Securities and Exchange Commission. EDGAR is the SEC's filing system; the filings themselves are public records.
 
+## Releases
+
+Every push to `main` publishes a new version to npm and the MCP registry from GitHub Actions. `package.json` and `server.json` carry the major and minor version; the patch number is the workflow run number.
+
 MIT license.

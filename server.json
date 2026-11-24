@@ -14,5 +14,21 @@
       "type": "streamable-http",
       "url": "https://www.quantisnow.com/api/v1/mcp"
     }
+  ],
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "quantisnow",
+      "version": "1.0.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "packageArguments": [
+        {
+          "type": "positional",
+          "value": "mcp"
+        }
+      ]
+    }
   ]
 }

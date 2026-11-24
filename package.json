@@ -1,6 +1,6 @@
 {
   "name": "quantisnow",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "SEC EDGAR MCP server and CLI: full-text search of SEC filings, Form 4 insider trades, 13F holdings, 8-K events, XBRL financials and congress trades for Claude, ChatGPT, Cursor and your terminal.",
   "type": "module",
   "bin": {
