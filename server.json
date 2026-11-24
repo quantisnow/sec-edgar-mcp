@@ -2,26 +2,17 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "com.quantisnow/sec-edgar",
   "title": "Quantisnow SEC EDGAR",
-  "description": "SEC EDGAR filings full-text search, Form 4 insider trades, 13F holdings, 8-K events, XBRL financials.",
+  "description": "SEC EDGAR full-text search, Form 4 insider trades, 13F holdings, 8-K events, XBRL financials.",
   "websiteUrl": "https://www.quantisnow.com/sec-api/mcp",
   "repository": {
     "url": "https://github.com/quantisnow/sec-edgar-mcp",
     "source": "github"
   },
-  "version": "0.1.1",
+  "version": "1.0.0",
   "remotes": [
     {
       "type": "streamable-http",
       "url": "https://www.quantisnow.com/api/v1/mcp"
-    }
-  ],
-  "packages": [
-    {
-      "registryType": "npm",
-      "identifier": "quantisnow",
-      "version": "0.1.1",
-      "transport": { "type": "stdio" },
-      "packageArguments": [{ "type": "positional", "value": "mcp" }]
     }
   ]
 }
