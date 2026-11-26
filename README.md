@@ -52,6 +52,8 @@ Add `--print` to see the change without writing it. For clients that only start 
 
 Signing up is free and needs no card.
 
+This repo is also a Cursor plugin: `.cursor-plugin/plugin.json` is the manifest and `mcp.json` points Cursor at the hosted server above.
+
 ## Tools
 
 | Tool | What it does |

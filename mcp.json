@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "quantisnow": {
+      "url": "https://www.quantisnow.com/api/v1/mcp"
+    }
+  }
+}

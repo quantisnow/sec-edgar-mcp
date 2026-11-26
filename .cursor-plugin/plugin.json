@@ -1,0 +1,15 @@
+{
+  "name": "quantisnow-sec-edgar",
+  "displayName": "Quantisnow SEC EDGAR",
+  "version": "1.0.0",
+  "description": "Search every SEC EDGAR filing by what it says, plus Form 4 insider trades, 13F holdings, 13D/13G stakes, 8-K events, XBRL financials and House members' stock trades. Hosted MCP server with OAuth sign-in, nothing to run locally.",
+  "author": {
+    "name": "Quantisnow",
+    "email": "dev@quantisnow.com"
+  },
+  "homepage": "https://www.quantisnow.com/sec-api/mcp",
+  "repository": "https://github.com/quantisnow/sec-edgar-mcp",
+  "license": "MIT",
+  "keywords": ["sec", "edgar", "sec-filings", "insider-trading", "form-4", "13f", "8-k", "xbrl", "finance", "mcp"],
+  "logo": "icon.png"
+}
