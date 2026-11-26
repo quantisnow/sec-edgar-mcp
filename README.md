@@ -4,7 +4,7 @@
 
 [![npm](https://img.shields.io/npm/v/quantisnow)](https://www.npmjs.com/package/quantisnow) [![quantisnow/sec-edgar-mcp MCP server](https://glama.ai/mcp/servers/quantisnow/sec-edgar-mcp/badges/score.svg)](https://glama.ai/mcp/servers/quantisnow/sec-edgar-mcp)
 
-A hosted MCP server for SEC EDGAR data. Claude, ChatGPT, Cursor, VS Code and other MCP clients can search every SEC filing by what it says, look up Form 4 insider trades, 13F holdings, 13D/13G stakes, 8-K events by item, XBRL financial statements and House members' stock trades. The same data works from your terminal with `npx quantisnow`.
+A hosted MCP server and API for live SEC EDGAR full-text search. Claude, ChatGPT, Cursor, VS Code and other MCP clients can search the words of every SEC filing and exhibit as soon as the SEC accepts it, get back the passage that matched with the ticker and a link to the filing, and look up Form 4 insider trades, 13F holdings, 13D/13G stakes, 8-K events by item, XBRL financial statements and House members' stock trades. The same data works from your terminal with `npx quantisnow`. A new key comes with 100 free calls, no card.
 
 There is nothing to run or host: the server lives at
 
